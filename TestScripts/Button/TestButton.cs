@@ -24,9 +24,10 @@ namespace SeleniumProject.TestScripts.Button
             //IWebElement ele = ObjectRepository.Driver.FindElement(By.XPath("//*[@class='bpk-button-IZE-J ProgressionButton__button-3U-H6']"));
             //ele.Click();
             Console.WriteLine("Enabled : {0}", ButtonHelper.IsButonEnabled(By.XPath("//*[@class='bpk-button-IZE-J ProgressionButton__button-3U-H6']")));
-            
-            //Console.WriteLine("Label : {0}", ButtonHelper.GetButtonText(By.XPath("//*[@class='bpk-button-IZE-J ProgressionButton__button-3U-H6']")));
-            
+
+            //Console.WriteLine("Label : {0}", ButtonHelper.GetButtonText(By.XPath("//button[@data-testid='login-button']"))); //in this case doesnt wrk but if we had got the value in the span then it would hv worked or in value locator
+            Console.WriteLine("Label : {0}", ButtonHelper.GetButtonText_alt(By.XPath("//button[@data-testid='login-button']")));//other way of extracing the text
+
             ButtonHelper.ClickButton(By.XPath("//*[@class='bpk-button-IZE-J ProgressionButton__button-3U-H6']"));
           
 

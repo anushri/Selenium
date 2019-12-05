@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -62,9 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass\BaseClass.cs" />
+    <Compile Include="ComponentHelper\BrowserHelper.cs" />
     <Compile Include="ComponentHelper\ButtonHelper.cs" />
     <Compile Include="ComponentHelper\ComboboxHelper.cs" />
     <Compile Include="ComponentHelper\GenericHelper.cs" />
+    <Compile Include="ComponentHelper\JavascriptPopupHelper.cs" />
     <Compile Include="ComponentHelper\LinkHelper.cs" />
     <Compile Include="ComponentHelper\NavigationHelper.cs" />
     <Compile Include="ComponentHelper\CheckboxHelper.cs" />
@@ -77,13 +81,22 @@
     <Compile Include="Interfaces\IConfig.cs" />
     <Compile Include="Settings\AppConfigKeys.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
+    <Compile Include="TestScripts\BrowserActions\TestBrowserAction.cs" />
     <Compile Include="TestScripts\Button\TestButton.cs" />
+    <Compile Include="TestScripts\DefaultWait\DefaultWait.cs" />
     <Compile Include="TestScripts\Dropdown\TestDropdown.cs" />
+    <Compile Include="TestScripts\FindElements\HandleElements.cs" />
     <Compile Include="TestScripts\Hyperlink\TestHyperLink.cs" />
+    <Compile Include="TestScripts\MouseAction\MoueAction.cs" />
+    <Compile Include="TestScripts\MultipleBrowser\TestMultipleBrowser.cs" />
     <Compile Include="TestScripts\PageNavigation\TestPageNavigation.cs" />
     <Compile Include="TestScripts\Checkbox\TestCheckbox.cs" />
+    <Compile Include="TestScripts\Popup\Popups.cs" />
     <Compile Include="TestScripts\RadioButton\TestRadioButton.cs" />
+    <Compile Include="TestScripts\Screenshots\TakeScreenshots.cs" />
     <Compile Include="TestScripts\TextBox\TestTextBox.cs" />
+    <Compile Include="TestScripts\WebdriverWait\DynamicWait.cs" />
+    <Compile Include="TestScripts\WebdriverWait\TestWait.cs" />
     <Compile Include="TestScripts\WebElements\TestWebelements.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +108,9 @@
   <ItemGroup>
     <Folder Include="ExcelReader\" />
     <Folder Include="PageObject\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

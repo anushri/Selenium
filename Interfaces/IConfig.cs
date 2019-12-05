@@ -17,5 +17,7 @@ namespace SeleniumProject.Interfaces
         string GetUserName();
         string GetPassword();
         string GetWebsite();
+        int GetPageLoadTimeOut();
+        int GetElementLoadTimeOut();
     }
 }

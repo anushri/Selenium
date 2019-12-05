@@ -39,5 +39,21 @@ namespace SeleniumProject.Configuraton
         {
             return ConfigurationManager.AppSettings.Get(AppConfigKeys.Website);
         }
+
+        public int GetElementLoadTimeOut()//implicit wait for elements
+        {
+            string timeout = ConfigurationManager.AppSettings.Get(AppConfigKeys.ElementLoadTimeout);
+            if (timeout == null)
+                return 30;//default value if not provided n app  config
+            return Convert.ToInt32(timeout);
+        }
+
+        public int GetPageLoadTimeOut()//explicit wait
+        {
+            string timeout = ConfigurationManager.AppSettings.Get(AppConfigKeys.PageLoadTimeout);
+            if (timeout == null)
+                return 30;
+            return Convert.ToInt32(timeout);
+        }
     }
 }

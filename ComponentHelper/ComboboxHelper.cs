@@ -18,7 +18,7 @@ namespace SeleniumProject.ComponentHelper
             select.SelectByIndex(index);
         }
 
-        //the above method is overloaded
+        //the above method is overloaded to select the opion by providing the value
         public static void SelectElement(By locator, string visible_text)
         {
             select = new SelectElement(GenericHelper.GetElement(locator));

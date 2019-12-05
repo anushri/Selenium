@@ -12,12 +12,42 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SeleniumProject.CustomException;
+using SeleniumProject.ComponentHelper;
 
 namespace SeleniumProject.BaseClass
 {
     [TestClass]
     public class BaseClass
     {
+
+        //private static IWebDriver GetFirefoxDriver()
+        //{
+        //    IWebDriver driver = new FirefoxDriver();
+        //    return driver;
+
+        //}
+
+        //creating fiefox driver service; returns an instance of default service
+        //we use this cresting s driver service as an alternative to adding athe driverpath in the system variable in my props and then adding the path to the path SV
+        // if we are taking this approach then use the below otherwise we just need need to add the above commented code and add data to the SVs.
+        private static FirefoxDriverService GetFirefoxDriverService()
+        {
+            var service = FirefoxDriverService.CreateDefaultService(@"C:\Drivers", "geckodriver.exe"); //returns an instance of FF driver service
+            service.HideCommandPromptWindow = true;
+            return service;
+        }
+        
+        //creating the driver service
+
+        private static FirefoxDriver GetFirefoxDriver()
+        {
+          
+            var driver = new FirefoxDriver(GetFirefoxDriverService());
+            return driver;
+        }
+
+
+        
         //returns the obj of chromeoption
         private static ChromeOptions GetChromeOptions()
         {
@@ -31,6 +61,7 @@ namespace SeleniumProject.BaseClass
             InternetExplorerOptions option = new InternetExplorerOptions();
             option.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
             option.EnsureCleanSession = true;
+
             return option;
         }
 
@@ -48,13 +79,7 @@ namespace SeleniumProject.BaseClass
 
         }
 
-        private static IWebDriver GetFirefoxDriver()
-        {
-            IWebDriver driver = new FirefoxDriver();
-            return driver;
-
-        }
-
+        
         //runs first
         [AssemblyInitialize]
         public static void InitWebDriver(TestContext tc)
@@ -78,17 +103,19 @@ namespace SeleniumProject.BaseClass
                 default:
                     throw new NoSuitableDriverFound("Driver not found  : "+ ObjectRepository.Config.GetBrowser().ToString());
 
-
-
             }
+
+            ObjectRepository.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ObjectRepository.Config.GetPageLoadTimeOut());//explicit wait for urls
+            ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut());//implicit wait for elements
+            BrowserHelper.BroswerMaximise(); 
         }
         [AssemblyCleanup]
         public static void TearDown()
         {
             if(ObjectRepository.Driver != null)
             {
-                ObjectRepository.Driver.Close();
-                ObjectRepository.Driver.Quit();
+                ObjectRepository.Driver.Close();//closes the browser currently pointed by the driver
+                ObjectRepository.Driver.Quit();//closes all browser windows and stops the webbrowser
             }
         }
     }

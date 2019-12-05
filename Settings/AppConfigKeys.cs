@@ -16,5 +16,7 @@ namespace SeleniumProject.Settings
         public const string Username = "Username";
         public const string password = "password";
         public const string Website = "Website";
+        public const string PageLoadTimeout = "PageLoadTimeout";
+        public const string ElementLoadTimeout = "ElementLoadTimeout";
     }
 }

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SeleniumProject.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,18 @@ namespace SeleniumProject.ComponentHelper
                 return String.Empty;
             else
                 return element.GetAttribute("value");
+        }
+
+        public static string GetButtonText_alt(By locator)
+        {
+            element = GenericHelper.GetElement(locator);
+            //we are checking the html tag which has the value saved 
+            if (element.Text == null)
+                return String.Empty;
+            else
+                return element.Text;
+
+            
         }
     }
 }

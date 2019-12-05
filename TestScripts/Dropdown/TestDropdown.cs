@@ -37,9 +37,7 @@ namespace SeleniumProject.TestScripts.Dropdown
             ComboboxHelper.SelectElement(By.Id("culture-selector-locale"), "el-GR");
             foreach (string item in ComboboxHelper.GetAllItem(By.Id("culture-selector-locale")))
             {
-                Console.WriteLine("Text: {0}", item);
-
-
+                Console.WriteLine("Text: {0}", item);//this prints all th eoptions in the dropdown
             }
 
 
