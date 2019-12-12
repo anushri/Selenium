@@ -48,18 +48,27 @@ namespace SeleniumProject.PageObject
 
         #region Action
 
-        public void QuickSearch(string origin, string destination)
+        public void QuickSearch(string origin=null, string destination=null)
         {
+            if (origin != null)
+                Origin.SendKeys(origin);
 
-            Origin.SendKeys(origin);
-            Destination.SendKeys(destination);
+            if (destination != null)
+                Destination.SendKeys(destination);
+            
             SearchButton.Click();
+        }
+
+        public new HomePageusingFW Logout()
+        {
+            base.Logout();
+            return new HomePageusingFW(driver);
         }
         #endregion
 
         #region Navigation
-        
-        
+
+
 
         public LoginusingFW NavigatetoLoginpopup()
         {

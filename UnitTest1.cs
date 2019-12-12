@@ -26,7 +26,8 @@ namespace SeleniumProject
             //Console.WriteLine((int)BrowserType.IExplorer);
 
             //creating a ref var config of the interface which is pointing to the derived class obj
-            //we can use the asme var to read data from other file for ex. f we read from xml file we can point to the xml reader file which will be similar to the appconfigreader
+            //we can use the asme var to read data from other file for ex. f we read from xml file we can point to the xml reader 
+            //file which will be similar to the appconfigreader
             //IConfig config = new AppConfigReader();
             //Console.WriteLine("Browser:{0}", config.GetBrowser());
             //Console.WriteLine("Username:{0}", config.GetUserName());

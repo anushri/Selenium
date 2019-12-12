@@ -64,8 +64,7 @@ namespace SeleniumProject.BaseClass
             option.ElementScrollBehavior = InternetExplorerElementScrollBehavior.Bottom;
             return option;
 
-            return option;
-        }
+            }
 
         //launching the browser which we specified in app.comfig file
         private static IWebDriver GetChromeDriver()
