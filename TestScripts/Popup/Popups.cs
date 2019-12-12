@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using SeleniumProject.ComponentHelper;
+using SeleniumProject.ComponentHelper.JavaScriptExecutor;
 using SeleniumProject.Settings;
 using System;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ namespace SeleniumProject.TestScripts.Popup
         public void TestAlert_using_Helper()
         {
 
-            //clearbody doesnt work
+            //Javascript executor example
 
             NavigationHelper.NavigateToUrl("https://www.w3schools.com/js/js_popup.asp");
             ButtonHelper.ClickButton(By.CssSelector("#main>div:nth-of-type(4)>a"));
@@ -46,17 +47,31 @@ namespace SeleniumProject.TestScripts.Popup
             var text = JavascriptPopupHelper.GetPopupText();
             JavascriptPopupHelper.ClickOKOnPopup();
             ObjectRepository.Driver.SwitchTo().DefaultContent();
+
+            
+            // Add this line before the line of code , where you are trying to clear the text area
+            IWebElement textarea = ObjectRepository.Driver.FindElement(By.Id("textareaCode"));
+            JavaScriptExecutor.ExecuteScript("document.getElementById('textareaCode').setAttribute('style','display: inline;')");
+            //if wewant to enterdata in the feild
+            JavaScriptExecutor.ExecuteScript("document.getElementById('textareaCode').value = 'new data'");
+            // for clicking ------JavaScriptExecutor.ExecuteScript("document.getElementById('hghgjghgjgjgjgj').click()");
+
+
             // TextboxHelper.ClearTextBody(By.XPath("//*[@id='textareawrapper']/div/div[6]/div[1]/div/div/div/div[5]"));
             //TextboxHelper.ClearTextBody(By.Id("textareacontainer"));
             // TextboxHelper.ClearTextBody(By.XPath("//*[@id='textareawrapper']/div/div[6]/div[1]/div/div/div"));
             //TextboxHelper.ClearTextBody(By.XPath("//*[@id='textareawrapper']/div/div[1]"));
             // TextboxHelper.ClearTextBody(By.XPath("//*[@id='textareawrapper']/div/div[6]/div[1]/div/div"));
-            Thread.Sleep(200);
+            //Thread.Sleep(200);
             //TextboxHelper.ClearTextBody(By.XPath("//*[@id='textareawrapper']/div/div[6]/div[1]"));
-            TextboxHelper.ClearTextBody(By.ClassName("CodeMirror-lines"));
+            TextboxHelper.ClearTextBody(By.CssSelector("#textareaCode"));
             TextboxHelper.TypeInTextbox(By.CssSelector("#textareaCode"), text);
 
         }
+
+
+       
+
 
         [TestMethod]
         public void TestAlert_confirm()

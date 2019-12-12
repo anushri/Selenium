@@ -50,10 +50,21 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="SeleniumExtras.PageObjects, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetSeleniumExtras.PageObjects.3.11.0\lib\net45\SeleniumExtras.PageObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
@@ -64,10 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass\BaseClass.cs" />
+    <Compile Include="BaseClass\PageBase.cs" />
     <Compile Include="ComponentHelper\BrowserHelper.cs" />
     <Compile Include="ComponentHelper\ButtonHelper.cs" />
     <Compile Include="ComponentHelper\ComboboxHelper.cs" />
     <Compile Include="ComponentHelper\GenericHelper.cs" />
+    <Compile Include="ComponentHelper\JavaScriptExecutor\JavaScriptExecutor.cs" />
     <Compile Include="ComponentHelper\JavascriptPopupHelper.cs" />
     <Compile Include="ComponentHelper\LinkHelper.cs" />
     <Compile Include="ComponentHelper\NavigationHelper.cs" />
@@ -78,19 +91,31 @@
     <Compile Include="Configuraton\AppConfigReader.cs" />
     <Compile Include="Configuraton\BrowserType.cs" />
     <Compile Include="CustomException\NoSuitableDriverFound.cs" />
+    <Compile Include="DataDriven\Scripts\Login.cs" />
     <Compile Include="Interfaces\IConfig.cs" />
+    <Compile Include="PageObject\HomePage - usingPageFactory - Copy.cs" />
+    <Compile Include="PageObject\HomePageusingFW.cs" />
+    <Compile Include="PageObject\HomePage.cs" />
+    <Compile Include="PageObject\LoginusingFW.cs" />
+    <Compile Include="PageObject\MapPageUsingPafeFactory.cs" />
+    <Compile Include="PageObject\MapPage.cs" />
     <Compile Include="Settings\AppConfigKeys.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
+    <Compile Include="TestScripts\AutoSuggest\TestAutoSuggest.cs" />
     <Compile Include="TestScripts\BrowserActions\TestBrowserAction.cs" />
     <Compile Include="TestScripts\Button\TestButton.cs" />
     <Compile Include="TestScripts\DefaultWait\DefaultWait.cs" />
     <Compile Include="TestScripts\Dropdown\TestDropdown.cs" />
+    <Compile Include="TestScripts\Final.cs" />
     <Compile Include="TestScripts\FindElements\HandleElements.cs" />
     <Compile Include="TestScripts\Hyperlink\TestHyperLink.cs" />
-    <Compile Include="TestScripts\MouseAction\MoueAction.cs" />
+    <Compile Include="TestScripts\KyboardAndMouseAction\KeybrdAndMoueAction.cs" />
     <Compile Include="TestScripts\MultipleBrowser\TestMultipleBrowser.cs" />
     <Compile Include="TestScripts\PageNavigation\TestPageNavigation.cs" />
     <Compile Include="TestScripts\Checkbox\TestCheckbox.cs" />
+    <Compile Include="TestScripts\PageObject\TestPO_FW.cs" />
+    <Compile Include="TestScripts\PageObject\Test_POusingPageFactory.cs" />
+    <Compile Include="TestScripts\PageObject\Test_PO.cs" />
     <Compile Include="TestScripts\Popup\Popups.cs" />
     <Compile Include="TestScripts\RadioButton\TestRadioButton.cs" />
     <Compile Include="TestScripts\Screenshots\TakeScreenshots.cs" />
@@ -107,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExcelReader\" />
-    <Folder Include="PageObject\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages\PhantomJS.2.1.1\tools\phantomjs\phantomjs.exe" />

@@ -23,5 +23,13 @@ namespace SeleniumProject.ComponentHelper
             element = GenericHelper.GetElement(locator);
             element.Clear();
         }
+
+        public static void ClearTextBody(IWebElement element)
+        {
+           // element = GenericHelper.GetElement(locator);
+            element.Clear();
+        }
+
+
     }
 }

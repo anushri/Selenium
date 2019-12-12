@@ -61,6 +61,8 @@ namespace SeleniumProject.BaseClass
             InternetExplorerOptions option = new InternetExplorerOptions();
             option.IntroduceInstabilityByIgnoringProtectedModeSettings = true;
             option.EnsureCleanSession = true;
+            option.ElementScrollBehavior = InternetExplorerElementScrollBehavior.Bottom;
+            return option;
 
             return option;
         }

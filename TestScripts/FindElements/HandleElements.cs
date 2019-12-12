@@ -17,7 +17,7 @@ namespace SeleniumProject.TestScripts.FindElements
         [TestMethod]
         public void GetAllElements()
         {
-
+            //gets a list of allelemst on webpage
             NavigationHelper.NavigateToUrl(ObjectRepository.Config.GetWebsite());
             ReadOnlyCollection<IWebElement> elements = ObjectRepository.Driver.FindElements(By.XPath("//input"));
             foreach (var item in elements)//var keyword sets the datatype of element based on the assignment in this case datatype of the item is iWebElement

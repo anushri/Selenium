@@ -5,15 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeleniumProject.TestScripts.MouseAction
+namespace SeleniumProject.DataDriven.Scripts
 {
-
     [TestClass]
-    public class MoueAction
+   public class Login
     {
-
-        [TestMethod]
-        public void TestContextClick()
+        public void TestLogin()
         {
 
         }

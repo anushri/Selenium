@@ -25,6 +25,18 @@ namespace SeleniumProject.ComponentHelper
             select.SelectByValue(visible_text);
         }
 
+        public static void SelectElement(IWebElement element, string visibletext)
+        {
+            select = new SelectElement(element);
+            select.SelectByValue(visibletext);
+        }
+
+        public static void SelectElement(IWebElement element, int index)
+        {
+            select = new SelectElement(element);
+            select.SelectByIndex(index);
+        }
+
         public static IList<string> GetAllItem(By locator)
         {
             select = new SelectElement(GenericHelper.GetElement(locator));

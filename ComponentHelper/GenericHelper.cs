@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumProject.Settings;
@@ -88,6 +89,19 @@ namespace SeleniumProject.ComponentHelper
             );   
         }
 
+        //dynamic wait
+        public static WebDriverWait GetWebdriverWait(TimeSpan timeout)
+        {
+            ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = (TimeSpan.FromSeconds(1));
+            WebDriverWait wait = new WebDriverWait(ObjectRepository.Driver, timeout)
+            {
+                PollingInterval = TimeSpan.FromMilliseconds(500),
+            };
+            wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
+          //  Logger.Info(" Wait Object Created ");
+            return wait;
+        }
+
 
         //returns webelement
         public static IWebElement WaitforWebElementInPage(By locator, TimeSpan timeout)
@@ -118,5 +132,7 @@ namespace SeleniumProject.ComponentHelper
 
             );
         }
+
+
     }
 }
