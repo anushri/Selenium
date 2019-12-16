@@ -29,7 +29,8 @@ namespace SeleniumProject.TestScripts.WebdriverWait
 
                 wait.PollingInterval = TimeSpan.FromMilliseconds(250);//checks the wait logic for any exeptions
 
-                wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));//if e find these exceptions then script doesnt stop it just igores those and continues
+                wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
+            //if we find these exceptions then script doesnt stop it just igores those and continues
 
                 // Waiting for the element to show up
                 IWebElement inputBox = wait.Until(waitforSearchbox(By.Id("fsc-destination-search")));

@@ -10,19 +10,21 @@ namespace SeleniumProject.ComponentHelper
 {
     public class GenericHelper
     {
-        private static bool case_insensitivity = true;
         private static IWebElement element;
         //to check whether element present, we need to supply the location startegy
         public static bool IsElementPresent(By Locator)
         {
             //returns true if element present (only unique element)
+            
+
             try
             {
                 return ObjectRepository.Driver.FindElements(Locator).Count == 1;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
+                Console.WriteLine(e);
                 return false;
             }
         }
@@ -30,15 +32,19 @@ namespace SeleniumProject.ComponentHelper
 
         public static IWebElement GetElement(By Locator)
         {
-            //returns element if present
-            if (IsElementPresent(Locator))
+            
+
+            try
             {
+
+                IsElementPresent(Locator).Equals(true);
                 return ObjectRepository.Driver.FindElement(Locator);
 
             }
-            else
+            catch (Exception e)
             {
-                throw new NoSuchElementException("Element not found :" + Locator.ToString());
+                Console.WriteLine("Element not found :" + Locator.ToString()+e.StackTrace);
+                throw new Exception(Locator.ToString());
             }
 
         }
@@ -133,16 +139,12 @@ namespace SeleniumProject.ComponentHelper
             );
         }
 
-        public static string GetTextAndCompare(By locator, string data)
+        public static void GetTextAndCompare(By locator, string data)
         {
 
             element = GenericHelper.GetElement(locator);
-            Assert.AreEqual(data, element.Text, ignoreCase: true);
-
-            if (element.Text == null)
-                return String.Empty;
-            else
-                return element.Text;
+            
+            Assert.AreEqual(data, element.Text, ignoreCase: true,"Match failed for  : " + locator);
 
 
         }
