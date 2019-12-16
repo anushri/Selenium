@@ -14,8 +14,14 @@ namespace SeleniumProject.ComponentHelper
         private static IWebElement element;
         public static void ClickButton(By locator)
         {
-            element = GenericHelper.GetElement(locator);
-            element.Click();
+            try
+            {
+                element = GenericHelper.GetElement(locator);
+                element.Click();
+            } catch(ElementNotVisibleException e)
+            {
+                System.Console.WriteLine("Couldn't find button at location: " + locator.ToString() + "\n\n" + e.ToString());
+            }
         }
 
         public static bool IsButonEnabled(By locator)
@@ -42,8 +48,6 @@ namespace SeleniumProject.ComponentHelper
                 return String.Empty;
             else
                 return element.Text;
-
-            
         }
     }
 }

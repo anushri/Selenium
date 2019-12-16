@@ -99,13 +99,19 @@
     <Compile Include="ComponentHelper\WindowHelper.cs" />
     <Compile Include="Configuraton\AppConfigReader.cs" />
     <Compile Include="Configuraton\BrowserType.cs" />
+    <Compile Include="CustomException\NoMatchFound.cs" />
+    <Compile Include="CustomException\NoSuchKeywordFoundException.cs" />
     <Compile Include="CustomException\NoSuitableDriverFound.cs" />
     <Compile Include="DataDriven\Scripts\Login.cs" />
+    <Compile Include="DataDriven\Scripts\TestLogin_DDFw.cs" />
     <Compile Include="DataDriven\Scripts\TestLogin_excel.cs" />
-    <Compile Include="ExcelReader\ExcelReader.cs" />
+    <Compile Include="ComponentHelper\ExcelReaderHelper.cs" />
     <Compile Include="ExcelReader\SearchUsingExcelReader.cs" />
     <Compile Include="ExcelReader\Search.cs" />
     <Compile Include="Interfaces\IConfig.cs" />
+    <Compile Include="KeywordDriven\DataEngine.cs" />
+    <Compile Include="KeywordDriven\ExcelReaderHelper_KD.cs" />
+    <Compile Include="L_TS\Class1.cs" />
     <Compile Include="PageObject\HomePage - usingPageFactory - Copy.cs" />
     <Compile Include="PageObject\HomePageusingFW.cs" />
     <Compile Include="PageObject\HomePage.cs" />
@@ -114,28 +120,29 @@
     <Compile Include="PageObject\MapPage.cs" />
     <Compile Include="Settings\AppConfigKeys.cs" />
     <Compile Include="Settings\ObjectRepository.cs" />
-    <Compile Include="TestScripts\AutoSuggest\TestAutoSuggest.cs" />
-    <Compile Include="TestScripts\BrowserActions\TestBrowserAction.cs" />
-    <Compile Include="TestScripts\Button\TestButton.cs" />
-    <Compile Include="TestScripts\DefaultWait\DefaultWait.cs" />
-    <Compile Include="TestScripts\Dropdown\TestDropdown.cs" />
-    <Compile Include="TestScripts\Final.cs" />
-    <Compile Include="TestScripts\FindElements\HandleElements.cs" />
-    <Compile Include="TestScripts\Hyperlink\TestHyperLink.cs" />
-    <Compile Include="TestScripts\KyboardAndMouseAction\KeybrdAndMoueAction.cs" />
-    <Compile Include="TestScripts\MultipleBrowser\TestMultipleBrowser.cs" />
-    <Compile Include="TestScripts\PageNavigation\TestPageNavigation.cs" />
-    <Compile Include="TestScripts\Checkbox\TestCheckbox.cs" />
-    <Compile Include="TestScripts\PageObject\TestPO_FW.cs" />
-    <Compile Include="TestScripts\PageObject\Test_POusingPageFactory.cs" />
-    <Compile Include="TestScripts\PageObject\Test_PO.cs" />
-    <Compile Include="TestScripts\Popup\Popups.cs" />
-    <Compile Include="TestScripts\RadioButton\TestRadioButton.cs" />
-    <Compile Include="TestScripts\Screenshots\TakeScreenshots.cs" />
-    <Compile Include="TestScripts\TextBox\TestTextBox.cs" />
-    <Compile Include="TestScripts\WebdriverWait\DynamicWait.cs" />
-    <Compile Include="TestScripts\WebdriverWait\TestWait.cs" />
-    <Compile Include="TestScripts\WebElements\TestWebelements.cs" />
+    <Compile Include="L_TS\AutoSuggest\TestAutoSuggest.cs" />
+    <Compile Include="L_TS\BrowserActions\TestBrowserAction.cs" />
+    <Compile Include="L_TS\Button\TestButton.cs" />
+    <Compile Include="L_TS\DefaultWait\DefaultWait.cs" />
+    <Compile Include="L_TS\Dropdown\TestDropdown.cs" />
+    <Compile Include="L_TS\Final.cs" />
+    <Compile Include="L_TS\FindElements\HandleElements.cs" />
+    <Compile Include="L_TS\Hyperlink\TestHyperLink.cs" />
+    <Compile Include="CW_TestScripts\KD\ClinicianLanding.cs" />
+    <Compile Include="L_TS\KyboardAndMouseAction\KeybrdAndMoueAction.cs" />
+    <Compile Include="L_TS\MultipleBrowser\TestMultipleBrowser.cs" />
+    <Compile Include="L_TS\PageNavigation\TestPageNavigation.cs" />
+    <Compile Include="L_TS\Checkbox\TestCheckbox.cs" />
+    <Compile Include="L_TS\PageObject\TestPO_FW.cs" />
+    <Compile Include="L_TS\PageObject\Test_POusingPageFactory.cs" />
+    <Compile Include="L_TS\PageObject\Test_PO.cs" />
+    <Compile Include="L_TS\Popup\Popups.cs" />
+    <Compile Include="L_TS\RadioButton\TestRadioButton.cs" />
+    <Compile Include="L_TS\Screenshots\TakeScreenshots.cs" />
+    <Compile Include="L_TS\TextBox\TestTextBox.cs" />
+    <Compile Include="L_TS\WebdriverWait\DynamicWait.cs" />
+    <Compile Include="L_TS\WebdriverWait\TestWait.cs" />
+    <Compile Include="L_TS\WebElements\TestWebelements.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -159,9 +166,9 @@
     <Error Condition="!Exists('packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.props'))" />
     <Error Condition="!Exists('packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets'))" />
     <Error Condition="!Exists('packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets'))" />
-    <Error Condition="!Exists('packages\Selenium.Chrome.WebDriver.77.0.0\build\Selenium.Chrome.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.Chrome.WebDriver.77.0.0\build\Selenium.Chrome.WebDriver.targets'))" />
+    <Error Condition="!Exists('packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets" Condition="Exists('packages\MSTest.TestAdapter.1.3.2\build\net45\MSTest.TestAdapter.targets')" />
   <Import Project="packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets')" />
-  <Import Project="packages\Selenium.Chrome.WebDriver.77.0.0\build\Selenium.Chrome.WebDriver.targets" Condition="Exists('packages\Selenium.Chrome.WebDriver.77.0.0\build\Selenium.Chrome.WebDriver.targets')" />
+  <Import Project="packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('packages\Selenium.WebDriver.ChromeDriver.79.0.3945.3600\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

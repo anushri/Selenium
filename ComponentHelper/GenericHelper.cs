@@ -1,18 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting.Logging;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumProject.Settings;
+using SeleniumProject.CustomException;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeleniumProject.ComponentHelper
 {
     public class GenericHelper
     {
+        private static bool case_insensitivity = true;
+        private static IWebElement element;
         //to check whether element present, we need to supply the location startegy
         public static bool IsElementPresent(By Locator)
         {
@@ -122,6 +121,7 @@ namespace SeleniumProject.ComponentHelper
 
         private static Func<IWebDriver, IWebElement> WaitForWebElementInPageFunc(By locator)
         {
+
             return ((x) =>
             {
                 if (x.FindElements(locator).Count == 1)
@@ -133,6 +133,19 @@ namespace SeleniumProject.ComponentHelper
             );
         }
 
+        public static string GetTextAndCompare(By locator, string data)
+        {
+
+            element = GenericHelper.GetElement(locator);
+            Assert.AreEqual(data, element.Text, ignoreCase: true);
+
+            if (element.Text == null)
+                return String.Empty;
+            else
+                return element.Text;
+
+
+        }
 
     }
 }

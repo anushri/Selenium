@@ -52,7 +52,8 @@ namespace SeleniumProject.BaseClass
         private static ChromeOptions GetChromeOptions()
         {
             ChromeOptions option = new ChromeOptions();
-            option.AddArgument("start-maximized");
+            option.AddArgument("start-maximized");//adding the cmdline arg
+           // option.AddArgument("--headless");
             return option;
         }
 
