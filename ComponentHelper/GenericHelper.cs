@@ -14,8 +14,8 @@ namespace SeleniumProject.ComponentHelper
         //to check whether element present, we need to supply the location startegy
         public static bool IsElementPresent(By Locator)
         {
-            //returns true if element present (only unique element)
-            
+            //returns true if element present (only unique element)--- for page base
+
 
             try
             {
@@ -32,7 +32,7 @@ namespace SeleniumProject.ComponentHelper
 
         public static IWebElement GetElement(By Locator)
         {
-            
+
 
             try
             {
@@ -43,26 +43,32 @@ namespace SeleniumProject.ComponentHelper
             }
             catch (Exception e)
             {
-                Console.WriteLine("Element not found :" + Locator.ToString()+e.StackTrace);
+                Console.WriteLine("Element not found :" + Locator.ToString() + e.StackTrace);
                 throw new Exception(Locator.ToString());
             }
 
         }
 
+
+
+
+
+
+
         public static void TakeScreenshot(string filename = "Screen")
         {
-            Screenshot screen = ObjectRepository.Driver.TakeScreenshot(); 
+            Screenshot screen = ObjectRepository.Driver.TakeScreenshot();
 
             if (filename.Equals("Screen"))//user hs not supplied the filename prefix
             {
                 string name = filename + DateTime.UtcNow.ToString("yyyy-MM-dd-mm-ss") + ".jpeg";
-                screen.SaveAsFile(filename,ScreenshotImageFormat.Jpeg);
+                screen.SaveAsFile(filename, ScreenshotImageFormat.Jpeg);
                 return;
             }
-            else 
+            else
             {
                 screen.SaveAsFile(filename, ScreenshotImageFormat.Jpeg);
-                
+
             }
 
         }
@@ -73,7 +79,7 @@ namespace SeleniumProject.ComponentHelper
         public static bool WaitforWebElement(By locator, TimeSpan timeout)
         {
             ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            WebDriverWait wait = new WebDriverWait(ObjectRepository.Driver,timeout);
+            WebDriverWait wait = new WebDriverWait(ObjectRepository.Driver, timeout);
             wait.PollingInterval = TimeSpan.FromMilliseconds(500);
             wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
             bool flag = wait.Until(WaitForWebElementFunc(locator));
@@ -90,8 +96,8 @@ namespace SeleniumProject.ComponentHelper
                 return false;
 
             }
-            
-            );   
+
+            );
         }
 
         //dynamic wait
@@ -103,7 +109,7 @@ namespace SeleniumProject.ComponentHelper
                 PollingInterval = TimeSpan.FromMilliseconds(500),
             };
             wait.IgnoreExceptionTypes(typeof(NoSuchElementException), typeof(ElementNotVisibleException));
-          //  Logger.Info(" Wait Object Created ");
+            //  Logger.Info(" Wait Object Created ");
             return wait;
         }
 
@@ -143,8 +149,8 @@ namespace SeleniumProject.ComponentHelper
         {
 
             element = GenericHelper.GetElement(locator);
-            
-            Assert.AreEqual(data, element.Text, ignoreCase: true,"Match failed for  : " + locator);
+
+            Assert.AreEqual(data, element.Text, ignoreCase: true, "Match failed for  : " + locator);
 
 
         }

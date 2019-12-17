@@ -15,7 +15,7 @@ namespace SeleniumProject.CW_TestScripts.KD
     [TestClass]
     public class ClinicianLanding
     {
-        [TestMethod]
+        [TestMethod, TestCategory("Regression")]
         public void ClinicianLanding_TC()
         {
             DataEngine keyDataEngine = new DataEngine();
