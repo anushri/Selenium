@@ -54,6 +54,7 @@ namespace SeleniumProject.ComponentHelper
                     return Convert.ToDateTime(data);
                 default:
                     return data.ToString();
+            
             }
         }
 
