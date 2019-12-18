@@ -17,6 +17,7 @@ namespace SeleniumProject.Settings
 
         // we need property of Iwebdriver to launch the browseras the appconfig(configuration) selection
         public static IWebDriver Driver { get; set; }
+
     }
 }
   
