@@ -102,6 +102,8 @@
     <Compile Include="CustomException\NoMatchFound.cs" />
     <Compile Include="CustomException\NoSuchKeywordFoundException.cs" />
     <Compile Include="CustomException\NoSuitableDriverFound.cs" />
+    <Compile Include="CW_TestScripts\KD\Class1 - Copy.cs" />
+    <Compile Include="CW_TestScripts\KD\Class1.cs" />
     <Compile Include="DataDriven\Scripts\Login.cs" />
     <Compile Include="DataDriven\Scripts\TestLogin_DDFw.cs" />
     <Compile Include="DataDriven\Scripts\TestLogin_excel.cs" />
