@@ -112,6 +112,7 @@
     <Compile Include="KeywordDriven\DataEngine.cs" />
     <Compile Include="KeywordDriven\ExcelReaderHelper_KD.cs" />
     <Compile Include="L_TS\Class1.cs" />
+    <Compile Include="L_TS\TestTable.cs" />
     <Compile Include="PageObject\HomePage - usingPageFactory - Copy.cs" />
     <Compile Include="PageObject\HomePageusingFW.cs" />
     <Compile Include="PageObject\HomePage.cs" />
@@ -128,7 +129,7 @@
     <Compile Include="L_TS\Final.cs" />
     <Compile Include="L_TS\FindElements\HandleElements.cs" />
     <Compile Include="L_TS\Hyperlink\TestHyperLink.cs" />
-    <Compile Include="CW_TestScripts\KD\ClinicianLanding.cs" />
+    <Compile Include="CW_TestScripts\ClinicianLanding.cs" />
     <Compile Include="L_TS\KyboardAndMouseAction\KeybrdAndMoueAction.cs" />
     <Compile Include="L_TS\MultipleBrowser\TestMultipleBrowser.cs" />
     <Compile Include="L_TS\PageNavigation\TestPageNavigation.cs" />
@@ -143,7 +144,6 @@
     <Compile Include="L_TS\WebdriverWait\DynamicWait.cs" />
     <Compile Include="L_TS\WebdriverWait\TestWait.cs" />
     <Compile Include="L_TS\WebElements\TestWebelements.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

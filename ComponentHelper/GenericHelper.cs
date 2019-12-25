@@ -155,5 +155,16 @@ namespace SeleniumProject.ComponentHelper
 
         }
 
+
+        public static void ComapreIfNull(By locator)
+        {
+
+            element = GenericHelper.GetElement(locator);
+
+            Assert.IsNotNull(element.Text, "Match failed as locator isnt populated  : " + locator);
+
+
+        }
+
     }
 }
