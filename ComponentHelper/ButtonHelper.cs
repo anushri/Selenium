@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using SeleniumProject.CustomException;
 using SeleniumProject.Settings;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,28 @@ namespace SeleniumProject.ComponentHelper
             element = GenericHelper.GetElement(locator);
             return element.Enabled;
         }
+
+
+
+        public static void GetButton_Enabled(By locator)
+        {
+            element = GenericHelper.GetElement(locator);
+       
+      
+            try
+            {
+                if (element.Enabled == true) ;
+            }
+            catch (Exception)
+            {
+
+                throw new ButtonNotEnabled("Button NotEnabled  :  " + locator + "    Element Name: " + element.Text);
+
+            }
+
+       
+        }
+
 
         public static string GetButtonText(By locator)
         {

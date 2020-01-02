@@ -30,10 +30,11 @@ namespace SeleniumProject.ComponentHelper
             }
             else
             {
-                return flag.Equals("true")||flag.Equals("checked");
-                    
+
+                return flag.ToLowerInvariant().Equals("true") || flag.Equals("checked");
+
             }
-            
+
         }
     }
 }

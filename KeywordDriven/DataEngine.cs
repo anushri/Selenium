@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumProject.ComponentHelper;
 using SeleniumProject.CustomException;
+using SeleniumProject.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,15 @@ namespace SeleniumProject.KeywordDriven
             {
                 switch (keyword)
                 {
+                    case "Quit":
+                        ObjectRepository.Driver.Close();
+                        ObjectRepository.Driver.Quit();
+                        break;
+
+                    case "Startup":
+                        BaseClass.BaseClass.Startup();
+                        break;
+
                     case "Click":
                         ButtonHelper.ClickButton(GetElementLocator(locatorType, locatorValue));
                         break;
@@ -75,12 +85,24 @@ namespace SeleniumProject.KeywordDriven
                     case "GetLinkText":
                         ButtonHelper.GetButtonText(GetElementLocator(locatorType, locatorValue));
                         break;
-                    case "GetLinkText_alt":
+                    case "GetField_Text":
                         ButtonHelper.GetButtonText_alt(GetElementLocator(locatorType, locatorValue));
                         break;
 
                     case "Compare":
                         GenericHelper.GetTextAndCompare(GetElementLocator(locatorType, locatorValue), args[0]);
+                        break;
+
+                    case "CheckWhetherPopulated":
+                        GenericHelper.ComapreIfNull(GetElementLocator(locatorType, locatorValue));
+                        break;
+
+                    case "IsElementPresesnt":
+                        GenericHelper.GetElement(GetElementLocator(locatorType, locatorValue));
+                        break;
+
+                    case "IsButtonEnabled":
+                        ButtonHelper.GetButton_Enabled(GetElementLocator(locatorType, locatorValue));
                         break;
 
                     default:

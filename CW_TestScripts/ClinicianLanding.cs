@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
 using SeleniumProject.ComponentHelper;
+using SeleniumProject.ComponentHelper.JavaScriptExecutor;
 using SeleniumProject.KeywordDriven;
 using SeleniumProject.Settings;
 using System;
@@ -34,12 +36,20 @@ namespace SeleniumProject.CW_TestScripts.KD
             TextboxHelper.TypeInTextbox(By.CssSelector("[formcontrolname='Username']"),"chadmin");
             TextboxHelper.TypeInTextbox(By.CssSelector("[formcontrolname='Password']"), "j06");
             ButtonHelper.ClickButton(By.CssSelector(".btn.btn-lg.btn-outline-primary"));
-            TextboxHelper.TypeInTextbox(By.CssSelector("input[name='search']"),"smithee");
-            ButtonHelper.ClickButton(By.CssSelector(".iconic.iconic-magnifying-glass"));
-            ButtonHelper.ClickButton(By.XPath("(//infinite-scroll-table-inner/table//tbody//tr[1]/td[3]//span)[1]"));
-            ButtonHelper.ClickButton(By.XPath("(//infinite-scroll-table-inner/table//tbody//tr[1]/td[3]//span)[1]"));
-            ButtonHelper.ClickButton(By.XPath("(//infinite-scroll-table-inner/table//tbody//patient-search-display-details/div[1]/form)[1]"));
-            LinkHelper.ClickLink(By.XPath("//div[@class='list-pf-title padding-sides-5']"));//opens the patient banner
+            GenericHelper.GetElement(By.CssSelector(".card-pf.flex-column.full-height"));
+            ButtonHelper.ClickButton(By.XPath("//div[contains(text(),'TESTANI, Chandra')]"));
+            ButtonHelper.ClickButton(By.CssSelector(".list-pf-container > div > .list-pf-content.list-pf-content-flex"));
+            GenericHelper.ComapreIfNull(By.XPath("//div[@class='flex-5']"));//alerts
+            Console.WriteLine(ButtonHelper.GetButtonText(By.XPath("//*[@id='pfng-list11-item0']/div/div[1]/div[2]/div[1]/div[2]/div/div[1]/text()")));
+
+            GenericHelper.GetTextAndCompare(By.ClassName("ng-tns-c31-26"),"MRN");
+
+            //TextboxHelper.TypeInTextbox(By.CssSelector("input[name='search']"), "smithee");
+            //ButtonHelper.ClickButton(By.CssSelector(".iconic.iconic-magnifying-glass"));
+            //ButtonHelper.ClickButton(By.XPath("(//infinite-scroll-table-inner/table//tbody//tr[1]/td[3]//span)[1]"));
+            //ButtonHelper.ClickButton(By.XPath("(//infinite-scroll-table-inner/table//tbody//tr[1]/td[3]//span)[1]"));
+            //ButtonHelper.ClickButton(By.XPath("(//infinite-scroll-table-inner/table//tbody//patient-search-display-details/div[1]/form)[1]"));
+            //LinkHelper.ClickLink(By.XPath("//div[@class='list-pf-title padding-sides-5']"));//opens the patient banner
             GenericHelper.GetTextAndCompare(By.XPath("//strong[contains(text(),'Address')]"),"Address");//checks the address label
             GenericHelper.GetTextAndCompare(By.XPath("//strong[contains(text(),'Home')]"), "Home");//checks the Home label
             GenericHelper.GetTextAndCompare(By.XPath("//strong[contains(text(),'Medicare')]"), "Medicare");//checks the Medicare label
@@ -52,7 +62,7 @@ namespace SeleniumProject.CW_TestScripts.KD
             GenericHelper.GetTextAndCompare(By.XPath("//strong[contains(text(),'Reactions')]"), "Reactions");//checks the Reactions label
             GenericHelper.GetTextAndCompare(By.XPath("//strong[contains(text(),'DoB')]"),"DoB");//checks the date of birth label
             GenericHelper.ComapreIfNull(By.CssSelector(".list-pf-container .row > div:nth-of-type(2)"));//checks MRN is populated with some data
-            GenericHelper.GetTextAndCompare(By.CssSelector(".list-pf-container .row > div:nth-of-type(3)"),"Sex F");//checks mrn value is present
+            GenericHelper.GetTextAndCompare(By.CssSelector(".list-pf-container .row > div:nth-of-type(3)"),"Sex sF");//checks mrn value is present
             
 
 

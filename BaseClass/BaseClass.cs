@@ -81,10 +81,11 @@ namespace SeleniumProject.BaseClass
 
         }
 
-        
+
         //runs first
-        [AssemblyInitialize]
-        public static void InitWebDriver(TestContext tc)
+        //[AssemblyInitialize]
+        //public static void InitWebDriver(TestContext tc)
+        public static void Startup()
         {
             ObjectRepository.Config = new AppConfigReader();
 
@@ -111,6 +112,41 @@ namespace SeleniumProject.BaseClass
             ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut());//implicit wait for elements
             BrowserHelper.BroswerMaximise(); 
         }
+
+
+
+        //runs first
+        [AssemblyInitialize]
+        public static void InitWebDriver(TestContext tc)
+       
+        {
+            ObjectRepository.Config = new AppConfigReader();
+
+            switch (ObjectRepository.Config.GetBrowser())
+            {
+                case BrowserType.Chrome:
+                    ObjectRepository.Driver = GetChromeDriver();
+                    break;
+
+                case BrowserType.Firefox:
+                    ObjectRepository.Driver = GetFirefoxDriver();
+                    break;
+
+                case BrowserType.IExplorer:
+                    ObjectRepository.Driver = GetIEDriver();
+                    break;
+
+                default:
+                    throw new NoSuitableDriverFound("Driver not found  : " + ObjectRepository.Config.GetBrowser().ToString());
+
+            }
+
+            ObjectRepository.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(ObjectRepository.Config.GetPageLoadTimeOut());//explicit wait for urls
+            ObjectRepository.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(ObjectRepository.Config.GetElementLoadTimeOut());//implicit wait for elements
+            BrowserHelper.BroswerMaximise();
+        }
+
+
         [AssemblyCleanup]
         public static void TearDown()
         {

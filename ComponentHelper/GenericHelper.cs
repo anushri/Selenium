@@ -5,11 +5,16 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumProject.Settings;
 using SeleniumProject.CustomException;
 using System;
+using log4net;
 
 namespace SeleniumProject.ComponentHelper
 {
+    
     public class GenericHelper
     {
+        private static readonly ILog Logger = Log4NetHelper.GetXmlLogger(typeof(BrowserHelper));
+
+
         private static IWebElement element;
         //to check whether element present, we need to supply the location startegy
         public static bool IsElementPresent(By Locator)
@@ -148,10 +153,23 @@ namespace SeleniumProject.ComponentHelper
         public static void GetTextAndCompare(By locator, string data)
         {
 
-            element = GenericHelper.GetElement(locator);
+            //element = GenericHelper.GetElement(locator);
 
-            Assert.AreEqual(data, element.Text, ignoreCase: true, "Match failed for  : " + locator);
+            //Assert.AreEqual(data, element.Text, ignoreCase: true, "Match failed for  : " + locator);
+            //Logger.Info("NOMatching the text and xpath text");
 
+            try
+            {
+                element = GenericHelper.GetElement(locator);
+
+                Assert.AreEqual(data, element.Text, ignoreCase: true);//, "Match failed for  : " + locator);
+            }
+
+            catch (Exception)
+            {
+                Logger.Error("NO Matching the text and xpath text");
+                throw new NoMatchFound("\nComparison failed for locator: " + locator + "    Expected value : "+ data + "    Actual Value : "+element.Text);
+            }
 
         }
 
@@ -159,12 +177,34 @@ namespace SeleniumProject.ComponentHelper
         public static void ComapreIfNull(By locator)
         {
 
-            element = GenericHelper.GetElement(locator);
+            //element = GenericHelper.GetElement(locator);
 
-            Assert.IsNotNull(element.Text, "Match failed as locator isnt populated  : " + locator);
+            //Assert.IsNotNull(element.Text, "Match failed as locator isnt populated  : " + locator);
+
+            try
+            {
+                element = GenericHelper.GetElement(locator);
+
+                Assert.IsNotNull(element.Text);//, "Match failed as locator isnt populated  : " + locator);
+               
+
+            }
+            catch (Exception)
+            {
+                Logger.Error("NOT Matching the text and xpath text");
+                throw new NoMatchFound("Match failed as locator isnt populated  :  " + element + "\n");
+            }
 
 
         }
+
+
+
+
+
+
+
+
 
     }
 }

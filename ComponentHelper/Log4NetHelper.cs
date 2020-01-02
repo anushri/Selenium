@@ -1,5 +1,6 @@
 ﻿using log4net;
 using log4net.Appender;
+using log4net.Config;
 using log4net.Core;
 using log4net.Layout;
 using System;
@@ -68,7 +69,7 @@ namespace SeleniumProject.ComponentHelper
                 Layout = GetPatternLayout(),
                 Threshold = Level.All,
                 AppendToFile = true,
-                File = "FileLogger.log",
+                File = @"..\..\Logs\FileLogger.log",
             };
             fileAppender.ActivateOptions();
             return fileAppender;
@@ -80,7 +81,7 @@ namespace SeleniumProject.ComponentHelper
             {
                 Name = "Rolling File Appender",
                 AppendToFile = true,
-                File = "RollingFile.log",
+                File = @"..\..\Logs\RollingFile.log",
                 Layout = GetPatternLayout(),
                 Threshold = Level.All,
                 MaximumFileSize = "1MB",
@@ -92,6 +93,39 @@ namespace SeleniumProject.ComponentHelper
 
         #endregion
 
+        #region Public
+        public static ILog GetLogger(Type type)
+        {
+            if (_consoleAppender == null)
+                _consoleAppender = GetConsoleAppender();
+
+            if (_fileAppender == null)
+                _fileAppender = GetFileAppender();
+
+            if (_rollingFileAppender == null)
+                _rollingFileAppender = GetRollingFileAppender();
+
+            if (_logger != null)
+                return _logger;
+
+            BasicConfigurator.Configure(_consoleAppender, _fileAppender, _rollingFileAppender);
+            _logger = LogManager.GetLogger(type);
+            return _logger;
+
+        }
+
+        //if you are stating all the appender informtion in the app.config file then you need to use the below code otherwise above code from the begninng..
+        public static ILog GetXmlLogger(Type type)
+        {
+            if (_xmlLogger != null)
+                return _xmlLogger;
+
+            XmlConfigurator.Configure();
+            _xmlLogger = LogManager.GetLogger(type);
+            return _xmlLogger;
+        }
+
+        #endregion
 
     }
 }
