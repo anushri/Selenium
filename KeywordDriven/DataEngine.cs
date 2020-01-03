@@ -105,6 +105,14 @@ namespace SeleniumProject.KeywordDriven
                         ButtonHelper.GetButton_Enabled(GetElementLocator(locatorType, locatorValue));
                         break;
 
+                    case "ClearText":
+                        TextboxHelper.ClearTextBody(GetElementLocator(locatorType, locatorValue));
+                        break;
+
+                    case "StringSearch":
+                        GenericHelper.StringSearch(GetElementLocator(locatorType, locatorValue), args[0]);
+                        break;
+
                     default:
                         throw new NoSuchKeywordFoundException("Keyword Not Found : " + keyword);
                 }

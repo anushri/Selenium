@@ -19,11 +19,15 @@ namespace SeleniumProject.ComponentHelper
             {
                 element = GenericHelper.GetElement(locator);
                 element.Click();
+                
             } catch(ElementNotVisibleException e)
             {
                 System.Console.WriteLine("Couldn't find button at location: " + locator.ToString() + "\n\n" + e.ToString());
             }
         }
+
+
+
 
         public static bool IsButonEnabled(By locator)
         {

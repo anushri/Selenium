@@ -200,6 +200,28 @@ namespace SeleniumProject.ComponentHelper
 
 
 
+        public static void StringSearch(By locator, string data)
+        {
+
+            try
+            {
+                element = GenericHelper.GetElement(locator);
+
+                Assert.IsNotNull(element.Text);
+                Assert.IsTrue(element.Text.Contains(data));
+
+            }
+            catch (Exception)
+            {
+                Logger.Error("NOT Matching the text and xpath text");
+                throw new NoMatchFound("Match failed for locator  :  " + element + "\n" + " Data : "+data);
+            }
+
+
+        }
+
+
+
 
 
 

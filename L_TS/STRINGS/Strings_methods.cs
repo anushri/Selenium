@@ -30,7 +30,7 @@ namespace SeleniumProject.L_TS.STRINGS
         }
 
 
-        public Boolean MatchWildcardString(String pattern, String input)
+        public static Boolean MatchWildcardString(String pattern, String input)
         {
             if (String.Compare(pattern, input) == 0)
             {

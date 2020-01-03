@@ -1,16 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Extensions;
 using SeleniumProject.ComponentHelper;
-using SeleniumProject.ComponentHelper.JavaScriptExecutor;
 using SeleniumProject.KeywordDriven;
 using SeleniumProject.Settings;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace SeleniumProject.CW_TestScripts.KD
 {
@@ -37,8 +31,23 @@ namespace SeleniumProject.CW_TestScripts.KD
             TextboxHelper.TypeInTextbox(By.CssSelector("[formcontrolname='Password']"), "j06");
             ButtonHelper.ClickButton(By.CssSelector(".btn.btn-lg.btn-outline-primary"));
             GenericHelper.GetElement(By.CssSelector(".card-pf.flex-column.full-height"));
+            ButtonHelper.ClickButton(By.XPath("//ng-sidebar[1]/aside[1]//div[1]/control-daterange[1]/form[1]/div[1]/input[1]"));
+            TextboxHelper.ClearTextBody(By.XPath("//ng-sidebar[1]/aside[1]//div[1]/control-daterange[1]/form[1]/div[1]/input[1]"));
+            TextboxHelper.TypeInTextbox(By.XPath("//ng-sidebar[1]/aside[1]//div[1]/control-daterange[1]/form[1]/div[1]/input[1]"),"02-02-2020");
+            GenericHelper.ComapreIfNull(By.CssSelector(".card-pf.flex-column.full-height"));
             ButtonHelper.ClickButton(By.XPath("//div[contains(text(),'TESTANI, Chandra')]"));
             ButtonHelper.ClickButton(By.CssSelector(".list-pf-container > div > .list-pf-content.list-pf-content-flex"));
+            IWebElement element = ObjectRepository.Driver.FindElement(By.CssSelector(".row > .padding-sides-5:nth-child(2)"));
+            //Assert.IsTrue(BrowserHelper.MatchWildcardString("?01-Feb-1995", element.Text));
+            Console.WriteLine(element.Text.Contains("STB 15476"));
+            Assert.IsTrue(element.Text.Contains("STB 15476"));
+
+            IWebElement element1 = ObjectRepository.Driver.FindElement(By.XPath("//div[@class='flex-column']/div[@class='row']/div[3]/div/div[1]/span[@class='flex-1']"));
+            Console.WriteLine(element1.Text.Contains("706459858"));
+
+
+
+
             GenericHelper.ComapreIfNull(By.XPath("//div[@class='flex-5']"));//alerts
             Console.WriteLine(ButtonHelper.GetButtonText(By.XPath("//*[@id='pfng-list11-item0']/div/div[1]/div[2]/div[1]/div[2]/div/div[1]/text()")));
 
