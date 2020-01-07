@@ -89,6 +89,10 @@ namespace SeleniumProject.KeywordDriven
                         ButtonHelper.GetButtonText_alt(GetElementLocator(locatorType, locatorValue));
                         break;
 
+                    case "IsButonDisabled":
+                        ButtonHelper.GetButton_Disabled(GetElementLocator(locatorType, locatorValue));
+                        break;
+
                     case "Compare":
                         GenericHelper.GetTextAndCompare(GetElementLocator(locatorType, locatorValue), args[0]);
                         break;
@@ -105,6 +109,8 @@ namespace SeleniumProject.KeywordDriven
                         ButtonHelper.GetButton_Enabled(GetElementLocator(locatorType, locatorValue));
                         break;
 
+                 
+
                     case "ClearText":
                         TextboxHelper.ClearTextBody(GetElementLocator(locatorType, locatorValue));
                         break;
@@ -112,6 +118,11 @@ namespace SeleniumProject.KeywordDriven
                     case "StringSearch":
                         GenericHelper.StringSearch(GetElementLocator(locatorType, locatorValue), args[0]);
                         break;
+
+                    case "Combobox_Select":
+                        ComboboxHelper.SelectElement(GetElementLocator(locatorType, locatorValue), args[0]);
+                        break;
+
 
                     default:
                         throw new NoSuchKeywordFoundException("Keyword Not Found : " + keyword);

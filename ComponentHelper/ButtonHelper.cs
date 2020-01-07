@@ -27,7 +27,24 @@ namespace SeleniumProject.ComponentHelper
         }
 
 
+        // to check if the button is disbaled if not throw an exception Button enabled 
 
+        public static void GetButton_Disabled(By locator)
+        {
+            element = GenericHelper.GetElement(locator);
+            try
+            {
+                if (element.Enabled == false) ;
+
+
+            }
+
+            catch (Exception)
+
+            {
+                throw new ButtonEnabled("Button Enabled  :  " + locator + "    Element Name: " + element.Text);
+            }
+        }
 
         public static bool IsButonEnabled(By locator)
         {

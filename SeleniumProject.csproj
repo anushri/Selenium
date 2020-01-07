@@ -123,6 +123,7 @@
     <Compile Include="ComponentHelper\BrowserHelper.cs" />
     <Compile Include="ComponentHelper\ButtonHelper.cs" />
     <Compile Include="ComponentHelper\ComboboxHelper.cs" />
+    <Compile Include="ComponentHelper\DateTimeHelper.cs" />
     <Compile Include="ComponentHelper\GenericHelper.cs" />
     <Compile Include="ComponentHelper\GridHelper.cs" />
     <Compile Include="ComponentHelper\JavaScriptExecutor\JavaScriptExecutor.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="ComponentHelper\WindowHelper.cs" />
     <Compile Include="Configuraton\AppConfigReader.cs" />
     <Compile Include="Configuraton\BrowserType.cs" />
+    <Compile Include="CustomException\ButtonEnabled.cs" />
     <Compile Include="CustomException\ButtonNotEnabled.cs" />
     <Compile Include="CustomException\NoMatchFound.cs" />
     <Compile Include="CustomException\NoSuchKeywordFoundException.cs" />
