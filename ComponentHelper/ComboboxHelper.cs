@@ -37,6 +37,7 @@ namespace SeleniumProject.ComponentHelper
             select.SelectByIndex(index);
         }
 
+
         public static IList<string> GetAllItem(By locator)
         {
             select = new SelectElement(GenericHelper.GetElement(locator));
