@@ -12,7 +12,6 @@ namespace SeleniumProject.ComponentHelper
     
     public class GenericHelper
     {
-        private static readonly ILog Logger = Log4NetHelper.GetXmlLogger(typeof(BrowserHelper));
 
 
         private static IWebElement element;
@@ -75,6 +74,15 @@ namespace SeleniumProject.ComponentHelper
                 screen.SaveAsFile(filename, ScreenshotImageFormat.Jpeg);
 
             }
+
+            //string path = @"..\..\Screenshots\";
+
+            //Screenshot screen = ObjectRepository.Driver.TakeScreenshot();
+
+            //string name = path + filename + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".jpeg";
+
+            //screen.SaveAsFile(name, ScreenshotImageFormat.Jpeg);
+
 
         }
 
